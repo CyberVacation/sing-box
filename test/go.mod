@@ -14,12 +14,12 @@ require (
 	github.com/opencontainers/image-spec v1.1.0
 	github.com/sagernet/quic-go v0.61.0-sing-box-mod.7
 	github.com/sagernet/sing v0.9.6-0.20260922013359-4ca3bebe0b8e
-	github.com/sagernet/sing-openvpn v0.0.0-20260925112415-fe3a4fdc2e64
-	github.com/sagernet/sing-quic v0.7.1-0.20260927144857-8601a428f4db
+	github.com/sagernet/sing-openvpn v0.0.0-20260903200517-e060dda5b1f1
+	github.com/sagernet/sing-quic v0.7.1-0.20260904135313-497364e8ee3e
 	github.com/sagernet/sing-shadowsocks v0.2.8
 	github.com/sagernet/sing-shadowsocks2 v0.2.1
-	github.com/sagernet/sing-tun v0.9.6-0.20260925112405-97d11460f2ea
-	github.com/sagernet/tailscale v1.102.1-sing-box-1.14-mod.5.0.20260925112514-35e61219dedd
+	github.com/sagernet/sing-tun v0.9.6-0.20260922014221-204d6b6fbceb
+	github.com/sagernet/tailscale v1.102.1-sing-box-1.14-mod.5.0.20260916060041-a8fbeb4b0838
 	github.com/spyzhov/ajson v0.9.4
 	github.com/stretchr/testify v1.12.0
 	go.uber.org/goleak v1.3.0
@@ -213,5 +213,3 @@ require (
 	lukechampine.com/blake3 v1.3.0 // indirect
 	zombiezen.com/go/capnproto2 v2.18.2+incompatible // indirect
 )
-
-replace github.com/sagernet/sing-tun => ../../sing-tun
