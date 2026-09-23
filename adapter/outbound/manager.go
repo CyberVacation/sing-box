@@ -4,6 +4,7 @@ import (
 	"context"
 	"io"
 	"os"
+	"slices"
 	"strings"
 	"sync"
 
@@ -194,7 +195,48 @@ func (m *Manager) Close() error {
 func (m *Manager) Outbounds() []adapter.Outbound {
 	m.access.RLock()
 	defer m.access.RUnlock()
-	return m.outbounds
+	return slices.Clone(m.outbounds)
+}
+
+// Publish installs a prevalidated batch without closing the old instances.
+// Their owner is responsible for draining and closing them. The callback must
+// not look up outbounds through this manager.
+func (m *Manager) Publish(replacements []adapter.Outbound, removed []string, commit func()) {
+	m.access.Lock()
+	defer m.access.Unlock()
+	byTag := make(map[string]adapter.Outbound, len(m.outboundByTag)+len(replacements))
+	for tag, value := range m.outboundByTag {
+		byTag[tag] = value
+	}
+	for _, tag := range removed {
+		delete(byTag, tag)
+	}
+	for _, value := range replacements {
+		byTag[value.Tag()] = value
+	}
+	var outbounds []adapter.Outbound
+	seen := make(map[string]bool)
+	for _, value := range append(slices.Clone(m.outbounds), replacements...) {
+		if replacement, found := byTag[value.Tag()]; found && !seen[value.Tag()] {
+			outbounds = append(outbounds, replacement)
+			seen[value.Tag()] = true
+		}
+	}
+	if commit != nil {
+		commit()
+	}
+	m.outbounds, m.outboundByTag = outbounds, byTag
+	if m.defaultOutbound != nil {
+		if value, found := byTag[m.defaultOutbound.Tag()]; found {
+			m.defaultOutbound = value
+		}
+	}
+	m.dependByTag = make(map[string][]string)
+	for _, value := range outbounds {
+		for _, dependency := range value.Dependencies() {
+			m.dependByTag[dependency] = append(m.dependByTag[dependency], value.Tag())
+		}
+	}
 }
 
 func (m *Manager) Outbound(tag string) (adapter.Outbound, bool) {

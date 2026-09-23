@@ -19,6 +19,7 @@ import (
 	"github.com/sagernet/sing-box/common/dialer"
 	"github.com/sagernet/sing-box/common/httpclient"
 	"github.com/sagernet/sing-box/common/netns"
+	"github.com/sagernet/sing-box/common/outboundset"
 	"github.com/sagernet/sing-box/common/taskmonitor"
 	"github.com/sagernet/sing-box/common/tls"
 	"github.com/sagernet/sing-box/common/trafficcontrol"
@@ -62,6 +63,7 @@ type Box struct {
 	router              *route.Router
 	referenceManager    *route.ReferenceManager
 	httpClientService   adapter.LifecycleService
+	outboundSets        *outboundset.Manager
 	internalService     []adapter.LifecycleService
 	done                chan struct{}
 }
@@ -188,6 +190,15 @@ func New(options Options) (*Box, error) {
 		return nil, E.Cause(err, "create log factory")
 	}
 	service.MustRegister[log.Factory](ctx, logFactory)
+	outboundSets, err := outboundset.PrepareWithDownloader(ctx, logFactory.NewLogger("outbound-set"), options.Options, func(downloadContext context.Context, url string, client option.HTTPClientOptions, available option.Options) ([]byte, error) {
+		return downloadOutboundSet(downloadContext, available, url, client)
+	})
+	if err != nil {
+		logFactory.Close()
+		return nil, E.Cause(err, "initialize outbound sets")
+	}
+
+	options.Options = outboundSets.Options
 
 	var internalServices []adapter.LifecycleService
 	routeOptions := common.PtrValueOrDefault(options.Route)
@@ -470,6 +481,10 @@ func New(options Options) (*Box, error) {
 		timeService.TimeService = ntpService
 		internalServices = append(internalServices, adapter.NewLifecycleService(ntpService, "ntp service"))
 	}
+	outboundSets.SaveCache()
+	outboundSetManager := outboundSets.Attach(ctx, outboundManager, outboundRegistry, router, func(updated option.Options) {
+		referenceManager.UpdateOutbounds(updated.Outbounds)
+	})
 	return &Box{
 		ctx:                 ctx,
 		network:             networkManager,
@@ -484,6 +499,7 @@ func New(options Options) (*Box, error) {
 		router:              router,
 		referenceManager:    referenceManager,
 		httpClientService:   httpClientService,
+		outboundSets:        outboundSetManager,
 		createdAt:           createdAt,
 		debugOptions:        debugOptions,
 		logFactory:          logFactory,
@@ -560,6 +576,11 @@ func (s *Box) preStart() error {
 	if err != nil {
 		return err
 	}
+	if s.outboundSets != nil {
+		if err = s.outboundSets.Initialize(); err != nil {
+			return err
+		}
+	}
 	err = adapter.Start(s.ctx, s.logger, adapter.StartStateStart, s.router, s.dnsRouter)
 	if err != nil {
 		return err
@@ -604,6 +625,9 @@ func (s *Box) start() error {
 	if err != nil {
 		return err
 	}
+	if s.outboundSets != nil {
+		s.outboundSets.Start()
+	}
 	return nil
 }
 
@@ -615,6 +639,9 @@ func (s *Box) Close() error {
 		close(s.done)
 	}
 	var err error
+	if s.outboundSets != nil {
+		err = s.outboundSets.Close()
+	}
 	if s.debugHTTPServer != nil {
 		err = E.Append(err, s.debugHTTPServer.Close(), func(err error) error {
 			return E.Cause(err, "close debug HTTP server")

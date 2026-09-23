@@ -108,6 +108,12 @@
         "$ref": "#/$defs/Outbound"
       }
     },
+    "outbound_set": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OutboundSet"
+      }
+    },
     "route": {
       "$ref": "#/$defs/RouteOptions"
     },
@@ -8760,6 +8766,9 @@
               "type": "string",
               "x-tag-reference": "inbound"
             },
+            "decryption": {
+              "type": "string"
+            },
             "users": {
               "type": "array",
               "items": {
@@ -12716,6 +12725,21 @@
             "tag": {
               "type": "string"
             },
+            "outbound_set": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "x-tag-reference": "outbound_set"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "x-tag-reference": "outbound_set"
+                  }
+                }
+              ]
+            },
             "outbounds": {
               "type": "array",
               "items": {
@@ -14528,6 +14552,21 @@
             "tag": {
               "type": "string"
             },
+            "outbound_set": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "x-tag-reference": "outbound_set"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "x-tag-reference": "outbound_set"
+                  }
+                }
+              ]
+            },
             "outbounds": {
               "type": "array",
               "items": {
@@ -14675,6 +14714,9 @@
               "maximum": 65535
             },
             "uuid": {
+              "type": "string"
+            },
+            "encryption": {
               "type": "string"
             },
             "flow": {
@@ -14977,6 +15019,151 @@
         }
       },
       "additionalProperties": false
+    },
+    "OutboundSet": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "inline",
+                ""
+              ]
+            },
+            "tag": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "outbounds": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "tag": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "tag"
+                ]
+              }
+            },
+            "override": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "required": [
+            "outbounds",
+            "tag"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "local"
+            },
+            "tag": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "format": {
+              "type": "string",
+              "enum": [
+                "source"
+              ]
+            },
+            "override": {
+              "type": "object",
+              "properties": {}
+            },
+            "path": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "path",
+            "tag"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "remote"
+            },
+            "tag": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "format": {
+              "type": "string",
+              "enum": [
+                "source"
+              ]
+            },
+            "override": {
+              "type": "object",
+              "properties": {}
+            },
+            "url": {
+              "type": "string"
+            },
+            "initial_path": {
+              "type": "string"
+            },
+            "http_client": {
+              "$ref": "#/$defs/HTTPClientReference"
+            },
+            "update_interval": {
+              "$ref": "#/$defs/Duration"
+            }
+          },
+          "required": [
+            "type",
+            "url",
+            "tag"
+          ],
+          "additionalProperties": false
+        }
+      ]
     },
     "OutboundTLSOptions": {
       "type": "object",
@@ -18292,6 +18479,320 @@
           "type": "object",
           "properties": {
             "type": {
+              "const": "xhttp"
+            },
+            "host": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "mode": {
+              "type": "string",
+              "enum": [
+                "auto",
+                "packet-up",
+                "stream-up",
+                "stream-one"
+              ]
+            },
+            "http_version": {
+              "type": "string",
+              "enum": [
+                "1.1",
+                "2",
+                "3"
+              ]
+            },
+            "headers": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "x_padding_bytes": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2147483647
+                },
+                {
+                  "type": "string",
+                  "pattern": "^[0-9]+-[0-9]+$"
+                }
+              ]
+            },
+            "x_padding_obfs_mode": {
+              "type": "boolean"
+            },
+            "x_padding_method": {
+              "type": "string",
+              "enum": [
+                "repeat-x",
+                "tokenish"
+              ]
+            },
+            "x_padding_placement": {
+              "type": "string",
+              "enum": [
+                "queryInHeader",
+                "header",
+                "cookie",
+                "query"
+              ]
+            },
+            "x_padding_key": {
+              "type": "string"
+            },
+            "x_padding_header": {
+              "type": "string"
+            },
+            "session_id_placement": {
+              "type": "string",
+              "enum": [
+                "path",
+                "query",
+                "header",
+                "cookie"
+              ]
+            },
+            "session_id_key": {
+              "type": "string"
+            },
+            "session_id_table": {
+              "type": "string"
+            },
+            "session_id_length": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2147483647
+                },
+                {
+                  "type": "string",
+                  "pattern": "^[0-9]+-[0-9]+$"
+                }
+              ]
+            },
+            "seq_placement": {
+              "type": "string",
+              "enum": [
+                "path",
+                "query",
+                "header",
+                "cookie"
+              ]
+            },
+            "seq_key": {
+              "type": "string"
+            },
+            "sc_max_buffered_posts": {
+              "type": "integer"
+            },
+            "no_sse_header": {
+              "type": "boolean"
+            },
+            "no_grpc_header": {
+              "type": "boolean"
+            },
+            "sc_max_each_post_bytes": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2147483647
+                },
+                {
+                  "type": "string",
+                  "pattern": "^[0-9]+-[0-9]+$"
+                }
+              ]
+            },
+            "sc_min_posts_interval_ms": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2147483647
+                },
+                {
+                  "type": "string",
+                  "pattern": "^[0-9]+-[0-9]+$"
+                }
+              ]
+            },
+            "xmux": {
+              "$ref": "#/$defs/V2RayXHTTPXMuxOptions"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "splithttp"
+            },
+            "host": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "mode": {
+              "type": "string",
+              "enum": [
+                "auto",
+                "packet-up",
+                "stream-up",
+                "stream-one"
+              ]
+            },
+            "http_version": {
+              "type": "string",
+              "enum": [
+                "1.1",
+                "2",
+                "3"
+              ]
+            },
+            "headers": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "x_padding_bytes": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2147483647
+                },
+                {
+                  "type": "string",
+                  "pattern": "^[0-9]+-[0-9]+$"
+                }
+              ]
+            },
+            "x_padding_obfs_mode": {
+              "type": "boolean"
+            },
+            "x_padding_method": {
+              "type": "string",
+              "enum": [
+                "repeat-x",
+                "tokenish"
+              ]
+            },
+            "x_padding_placement": {
+              "type": "string",
+              "enum": [
+                "queryInHeader",
+                "header",
+                "cookie",
+                "query"
+              ]
+            },
+            "x_padding_key": {
+              "type": "string"
+            },
+            "x_padding_header": {
+              "type": "string"
+            },
+            "session_id_placement": {
+              "type": "string",
+              "enum": [
+                "path",
+                "query",
+                "header",
+                "cookie"
+              ]
+            },
+            "session_id_key": {
+              "type": "string"
+            },
+            "session_id_table": {
+              "type": "string"
+            },
+            "session_id_length": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2147483647
+                },
+                {
+                  "type": "string",
+                  "pattern": "^[0-9]+-[0-9]+$"
+                }
+              ]
+            },
+            "seq_placement": {
+              "type": "string",
+              "enum": [
+                "path",
+                "query",
+                "header",
+                "cookie"
+              ]
+            },
+            "seq_key": {
+              "type": "string"
+            },
+            "sc_max_buffered_posts": {
+              "type": "integer"
+            },
+            "no_sse_header": {
+              "type": "boolean"
+            },
+            "no_grpc_header": {
+              "type": "boolean"
+            },
+            "sc_max_each_post_bytes": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2147483647
+                },
+                {
+                  "type": "string",
+                  "pattern": "^[0-9]+-[0-9]+$"
+                }
+              ]
+            },
+            "sc_min_posts_interval_ms": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2147483647
+                },
+                {
+                  "type": "string",
+                  "pattern": "^[0-9]+-[0-9]+$"
+                }
+              ]
+            },
+            "xmux": {
+              "$ref": "#/$defs/V2RayXHTTPXMuxOptions"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
               "const": "http"
             },
             "host": {
@@ -18412,6 +18913,80 @@
           "additionalProperties": false
         }
       ]
+    },
+    "V2RayXHTTPXMuxOptions": {
+      "type": "object",
+      "properties": {
+        "max_concurrency": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]+-[0-9]+$"
+            }
+          ]
+        },
+        "max_connections": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]+-[0-9]+$"
+            }
+          ]
+        },
+        "c_max_reuse_times": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]+-[0-9]+$"
+            }
+          ]
+        },
+        "h_max_request_times": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]+-[0-9]+$"
+            }
+          ]
+        },
+        "h_max_reusable_secs": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]+-[0-9]+$"
+            }
+          ]
+        },
+        "h_keep_alive_period": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
     },
     "VLESSUser": {
       "type": "object",
