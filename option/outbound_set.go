@@ -3,6 +3,7 @@ package option
 import (
 	"context"
 	"net/url"
+	"path/filepath"
 	"reflect"
 	"strings"
 
@@ -105,7 +106,7 @@ func (o OutboundSet) Validate() error {
 	if o.Format != "" && o.Format != C.OutboundSetFormatSource {
 		return E.New("unknown outbound-set format: ", o.Format)
 	}
-	var source string
+	var source, sourcePath string
 	switch o.Type {
 	case "", C.OutboundSetTypeInline:
 		if len(o.Tag) != 1 {
@@ -119,6 +120,7 @@ func (o OutboundSet) Validate() error {
 		}
 	case C.OutboundSetTypeLocal:
 		source = o.LocalOptions.Path
+		sourcePath = source
 		if source == "" {
 			return E.New("missing outbound-set path")
 		}
@@ -131,6 +133,7 @@ func (o OutboundSet) Validate() error {
 		if err != nil || parsedURL.Host == "" || (parsedURL.Scheme != "http" && parsedURL.Scheme != "https") {
 			return E.New("outbound-set url must be an HTTP or HTTPS URL")
 		}
+		sourcePath = parsedURL.Path
 		if len(o.Tag) > 1 && o.RemoteOptions.InitialPath != "" && !strings.Contains(o.RemoteOptions.InitialPath, C.OutboundSetTagPlaceholder) {
 			return E.New("missing {tag} placeholder in initial_path")
 		}
@@ -141,7 +144,7 @@ func (o OutboundSet) Validate() error {
 		if len(o.Tag) > 1 && !strings.Contains(source, C.OutboundSetTagPlaceholder) {
 			return E.New("missing {tag} placeholder in outbound-set source")
 		}
-		if o.Format == "" && ruleSetDefaultFormat(source) != C.OutboundSetFormatSource {
+		if o.Format == "" && filepath.Ext(sourcePath) != ".json" {
 			return E.New("missing outbound-set format: specify source for paths or URLs without a .json extension")
 		}
 	}

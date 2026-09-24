@@ -14,9 +14,11 @@ import (
 
 // Limits apply before accepting early data. Saturation disables new tickets or
 // rejects resumption; it never evicts replay entries for a still-valid ticket.
-const maxSessions = 4096
-const maxSessionReplays = 4096
-const maxReplays = 65536
+const (
+	maxSessions       = 4096
+	maxSessionReplays = 4096
+	maxReplays        = 65536
+)
 
 type clientSession struct {
 	ticket  [16]byte
@@ -188,9 +190,11 @@ func (s *Server) resumeConnection(raw net.Conn, iv, shared []byte, initial *reco
 	if _, err := rand.Read(prefix); err != nil {
 		return nil, err
 	}
-	conn := &Conn{Conn: raw, secret: secret, preWrite: prefix,
+	conn := &Conn{
+		Conn: raw, secret: secret, preWrite: prefix,
 		send:    newRecordCipherWithAlgorithm(prefix, secret, initial.chacha),
-		receive: newRecordCipherWithAlgorithm(encrypted, secret, initial.chacha)}
+		receive: newRecordCipherWithAlgorithm(encrypted, secret, initial.chacha),
+	}
 	if s.mode == modeRandom {
 		conn.sendMask = newMask(secret, prefix)
 		conn.receiveMask = newMask(secret, iv)

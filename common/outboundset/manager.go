@@ -132,9 +132,7 @@ func (m *Manager) Initialize() error {
 }
 
 func (m *Manager) Start() {
-	m.workers.Add(1)
-	go func() {
-		defer m.workers.Done()
+	m.workers.Go(func() {
 		for {
 			next := time.Now().Add(24 * time.Hour)
 			for _, source := range m.remotes {
@@ -156,7 +154,7 @@ func (m *Manager) Start() {
 			case <-timer.C:
 			}
 		}
-	}()
+	})
 }
 
 func (m *Manager) track(g *generation) {
@@ -406,6 +404,7 @@ func (s *stagingManager) Outbound(tag string) (adapter.Outbound, bool) {
 	}
 	return s.OutboundManager.Outbound(tag)
 }
+
 func (s *stagingManager) Default() adapter.Outbound {
 	value := s.OutboundManager.Default()
 	if value != nil && s.generated[value.Tag()] {

@@ -21,6 +21,7 @@ import (
 	"github.com/sagernet/sing-box/protocol/group"
 	M "github.com/sagernet/sing/common/metadata"
 	"github.com/sagernet/sing/service"
+
 	"github.com/stretchr/testify/require"
 )
 
@@ -200,7 +201,7 @@ func TestOutboundSetBootstrapCycleAndInitialPath(t *testing.T) {
 	require.ErrorContains(t, err, "provide cache or initial_path")
 	require.Zero(t, downloads.Load())
 	path := filepath.Join(t.TempDir(), "initial.json")
-	require.NoError(t, os.WriteFile(path, []byte(fmt.Sprintf(`{"version":1,"outbounds":[%s]}`, proxyDefinition("node", relay))), 0600))
+	require.NoError(t, os.WriteFile(path, []byte(fmt.Sprintf(`{"version":1,"outbounds":[%s]}`, proxyDefinition("node", relay))), 0o600))
 	ctx, options = parse(t, config)
 	options.OutboundSet[0].RemoteOptions.InitialPath = path
 	instance, err := box.New(box.Options{Context: ctx, Options: options})

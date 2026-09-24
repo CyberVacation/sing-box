@@ -154,9 +154,11 @@ func (s *Server) handshake(raw net.Conn) (*Conn, error) {
 	secret = append(secret, kemSecret...)
 	secret = append(secret, dhSecret...)
 	secret = append(secret, shared...)
-	conn := &Conn{Conn: raw, secret: secret,
+	conn := &Conn{
+		Conn: raw, secret: secret,
 		send:    newRecordCipherWithAlgorithm(serverPublic, secret, initial.chacha),
-		receive: newRecordCipherWithAlgorithm(public, secret, initial.chacha)}
+		receive: newRecordCipherWithAlgorithm(public, secret, initial.chacha),
+	}
 	// Consume and authenticate the complete client hello before exposing it to
 	// VLESS. Each allocation is bounded by the authenticated 16-bit length.
 	length, err = readHandshakeValue(raw, initial, 18)

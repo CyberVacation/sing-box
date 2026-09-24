@@ -133,8 +133,10 @@ func (c *Client) handshake(raw net.Conn) (*Conn, error) {
 		hello := append(iv, exchange...)
 		hello = appendPair(hello, initial, session.ticket[:])
 		secret := append(append([]byte(nil), session.secret[:]...), shared...)
-		conn := &Conn{Conn: raw, secret: secret, send: newRecordCipher(hello[len(hello)-32:], secret), preWrite: hello,
-			invalidate: func() { c.invalidateSession(session) }, random: c.mode == modeRandom}
+		conn := &Conn{
+			Conn: raw, secret: secret, send: newRecordCipher(hello[len(hello)-32:], secret), preWrite: hello,
+			invalidate: func() { c.invalidateSession(session) }, random: c.mode == modeRandom,
+		}
 		if conn.random {
 			conn.sendMask = newMask(secret, iv)
 		}

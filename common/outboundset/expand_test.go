@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"runtime"
 	"strings"
 	"sync/atomic"
 	"testing"
@@ -23,8 +24,10 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-const member = `{"type":"socks","tag":"node","server":"127.0.0.1","server_port":1080}`
-const document = `{"version":1,"outbounds":[` + member + `]}`
+const (
+	member   = `{"type":"socks","tag":"node","server":"127.0.0.1","server_port":1080}`
+	document = `{"version":1,"outbounds":[` + member + `]}`
+)
 
 func parse(t *testing.T, content string) (context.Context, option.Options) {
 	t.Helper()
@@ -210,7 +213,9 @@ func TestRemoteCache(t *testing.T) {
 	require.Len(t, paths, 1)
 	info, err := os.Stat(paths[0])
 	require.NoError(t, err)
-	require.Zero(t, info.Mode().Perm()&0o077, "cache contains proxy credentials")
+	if runtime.GOOS != "windows" {
+		require.Zero(t, info.Mode().Perm()&0o077, "cache contains proxy credentials")
+	}
 	for _, value := range []int32{1, 2} {
 		mode.Store(value)
 		cached, err := expand(ctx, options)

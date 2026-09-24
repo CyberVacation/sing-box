@@ -3,6 +3,7 @@ package outbound
 import (
 	"context"
 	"io"
+	"maps"
 	"os"
 	"slices"
 	"strings"
@@ -205,9 +206,7 @@ func (m *Manager) Publish(replacements []adapter.Outbound, removed []string, com
 	m.access.Lock()
 	defer m.access.Unlock()
 	byTag := make(map[string]adapter.Outbound, len(m.outboundByTag)+len(replacements))
-	for tag, value := range m.outboundByTag {
-		byTag[tag] = value
-	}
+	maps.Copy(byTag, m.outboundByTag)
 	for _, tag := range removed {
 		delete(byTag, tag)
 	}

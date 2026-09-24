@@ -17,6 +17,7 @@ import (
 	M "github.com/sagernet/sing/common/metadata"
 	N "github.com/sagernet/sing/common/network"
 	"github.com/sagernet/sing/service"
+
 	"github.com/stretchr/testify/require"
 )
 
@@ -52,6 +53,7 @@ func (o *lifecycleOutbound) Start(stage adapter.StartStage) error {
 	}
 	return nil
 }
+
 func (o *lifecycleOutbound) Close() error {
 	o.closes.Add(1)
 	for _, peer := range o.peers {
@@ -59,11 +61,13 @@ func (o *lifecycleOutbound) Close() error {
 	}
 	return nil
 }
+
 func (o *lifecycleOutbound) DialContext(context.Context, string, M.Socksaddr) (net.Conn, error) {
 	conn, peer := net.Pipe()
 	o.peers = append(o.peers, peer)
 	return conn, nil
 }
+
 func (o *lifecycleOutbound) ListenPacket(context.Context, M.Socksaddr) (net.PacketConn, error) {
 	return &testPacketConn{}, nil
 }
@@ -151,15 +155,18 @@ func (o *flowTestOutbound) InterfaceUpdated(context.Context) { o.updates++ }
 func (o *flowTestOutbound) PreferredDomain(_ *adapter.InboundContext, domain string) bool {
 	return domain == "example.com"
 }
+
 func (o *flowTestOutbound) PreferredAddress(_ *adapter.InboundContext, address netip.Addr) bool {
 	return address.Is4()
 }
+
 func (o *flowTestOutbound) PreMatchFlow(network string, _ netip.Addr) adapter.PreMatchAction {
 	if network == "icmp" {
 		return adapter.PreMatchFlow
 	}
 	return adapter.PreMatchContinue
 }
+
 func (*flowTestOutbound) PortAddresses() (netip.Addr, netip.Addr) { return netip.Addr{}, netip.Addr{} }
 func (*flowTestOutbound) PortMTU() uint32                         { return 1500 }
 func (*flowTestOutbound) AttachReturn(tun.Return) error           { return nil }

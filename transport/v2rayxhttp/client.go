@@ -15,8 +15,10 @@ import (
 	N "github.com/sagernet/sing/common/network"
 )
 
-var _ adapter.V2RayMultiplexClientTransport = (*Client)(nil)
-var _ adapter.IdleConnectionKeeper = (*Client)(nil)
+var (
+	_ adapter.V2RayMultiplexClientTransport = (*Client)(nil)
+	_ adapter.IdleConnectionKeeper          = (*Client)(nil)
+)
 
 type Client struct {
 	ctx     context.Context

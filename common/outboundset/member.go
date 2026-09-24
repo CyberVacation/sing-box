@@ -5,6 +5,7 @@ import (
 	"net"
 	"net/netip"
 	"os"
+	"slices"
 	"sync"
 	"time"
 
@@ -90,8 +91,8 @@ func (g *generation) retire() {
 
 func (g *generation) close() {
 	g.once.Do(func() {
-		for i := len(g.order) - 1; i >= 0; i-- {
-			g.instances[g.order[i].Tag()].release()
+		for _, outbound := range slices.Backward(g.order) {
+			g.instances[outbound.Tag()].release()
 		}
 		if g.onClose != nil {
 			g.onClose()
@@ -112,32 +113,38 @@ func (m *member) current() adapter.Outbound {
 	defer m.manager.currentAccess.RUnlock()
 	return m.manager.current.members[m.tag]
 }
+
 func (m *member) Type() string {
 	if value := m.current(); value != nil {
 		return value.Type()
 	}
 	return "removed"
 }
+
 func (m *member) Network() []string {
 	if value := m.current(); value != nil {
 		return value.Network()
 	}
 	return nil
 }
+
 func (m *member) Dependencies() []string {
 	if value := m.current(); value != nil {
 		return value.Dependencies()
 	}
 	return nil
 }
+
 func (m *member) MultiplexEnabled() bool {
 	value, ok := m.current().(adapter.OutboundWithMultiplex)
 	return ok && value.MultiplexEnabled()
 }
+
 func (m *member) IsEmpty() bool {
 	value, ok := m.current().(interface{ IsEmpty() bool })
 	return ok && value.IsEmpty()
 }
+
 func (m *member) SetKeepIdleConnections(keep bool) {
 	m.policyAccess.Lock()
 	defer m.policyAccess.Unlock()
@@ -164,6 +171,7 @@ func (m *member) applyIdlePolicyLocked() {
 		value.SetKeepIdleConnections(*m.keepIdle)
 	}
 }
+
 func (m *member) CloseIdleConnections() {
 	_, raw, release, err := m.acquire(context.Background())
 	if err != nil {
@@ -174,6 +182,7 @@ func (m *member) CloseIdleConnections() {
 		value.CloseIdleConnections()
 	}
 }
+
 func (m *member) Start(stage adapter.StartStage) error {
 	return adapter.LegacyStart(m.current(), stage)
 }
@@ -270,6 +279,7 @@ func (m *member) DialContext(ctx context.Context, network string, destination M.
 	}
 	return &trackedConn{Conn: conn, release: release}, nil
 }
+
 func (m *member) ListenPacket(ctx context.Context, destination M.Socksaddr) (net.PacketConn, error) {
 	ctx, value, release, err := m.acquire(ctx)
 	if err != nil {
@@ -360,6 +370,7 @@ func (c *trackedPacketConn) Close() error {
 func (c *trackedPacketConn) NeedHandshakeForRead() bool {
 	return N.NeedHandshakeForReadAny(c.PacketConn)
 }
+
 func (c *trackedPacketConn) NeedHandshakeForWrite() bool {
 	return N.NeedHandshakeForWriteAny(c.PacketConn)
 }

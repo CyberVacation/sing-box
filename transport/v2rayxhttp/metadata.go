@@ -14,12 +14,14 @@ import (
 	"golang.org/x/net/http/httpguts"
 )
 
-type metadataField struct{ placement, key, queryPrefix string }
-type metadataConfig struct {
-	session, sequence metadataField
-	alphabet          string
-	length            intRange
-}
+type (
+	metadataField  struct{ placement, key, queryPrefix string }
+	metadataConfig struct {
+		session, sequence metadataField
+		alphabet          string
+		length            intRange
+	}
+)
 
 func newMetadataField(name, placement, key, fallback string) (metadataField, error) {
 	if placement == "" {

@@ -56,9 +56,11 @@ func NewServer(ctx context.Context, _ logger.ContextLogger, options option.V2Ray
 		}
 	}
 	ctx, cancel := context.WithCancel(ctx)
-	s := &Server{ctx: ctx, cancel: cancel, config: config, tls: tc, handler: handler,
+	s := &Server{
+		ctx: ctx, cancel: cancel, config: config, tls: tc, handler: handler,
 		budget: semaphore.NewWeighted(serverBufferBudget), sessions: make(map[string]*serverSession),
-		active: make(map[*serverSession]struct{}), connections: make(map[*trackedHTTPConn]struct{})}
+		active: make(map[*serverSession]struct{}), connections: make(map[*trackedHTTPConn]struct{}),
+	}
 	if config.version == "3" {
 		s.http3, err = newHTTP3Server(s, tc)
 		if err != nil {
@@ -68,9 +70,10 @@ func NewServer(ctx context.Context, _ logger.ContextLogger, options option.V2Ray
 	} else {
 		if tc != nil {
 			alpn := []string{"h2", "http/1.1"}
-			if config.version == "1.1" {
+			switch config.version {
+			case "1.1":
 				alpn = []string{"http/1.1"}
-			} else if config.version == "2" {
+			case "2":
 				alpn = []string{"h2"}
 			}
 			tc.SetNextProtos(alpn)

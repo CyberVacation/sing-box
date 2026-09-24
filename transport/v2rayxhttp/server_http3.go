@@ -21,9 +21,11 @@ func newHTTP3Server(handler *Server, config tls.ServerConfig) (packetHTTPServer,
 	if err != nil {
 		return nil, fmt.Errorf("xhttp: HTTP/3 TLS: %w", err)
 	}
-	return &http3.Server{Handler: handler, TLSConfig: tc.Clone(), MaxHeaderBytes: 256 * 1024,
+	return &http3.Server{
+		Handler: handler, TLSConfig: tc.Clone(), MaxHeaderBytes: 256 * 1024,
 		ConnContext: func(ctx context.Context, conn *quic.Conn) context.Context {
 			return context.WithValue(ctx, http.LocalAddrContextKey, conn.LocalAddr())
 		},
-		QUICConfig: &quic.Config{MaxIdleTimeout: 90 * time.Second, KeepAlivePeriod: 30 * time.Second}}, nil
+		QUICConfig: &quic.Config{MaxIdleTimeout: 90 * time.Second, KeepAlivePeriod: 30 * time.Second},
+	}, nil
 }
