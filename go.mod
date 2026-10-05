@@ -198,3 +198,5 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	zombiezen.com/go/capnproto2 v2.18.2+incompatible // indirect
 )
+
+replace github.com/metacubex/utls => github.com/CyberVacation/utls v1.8.8
