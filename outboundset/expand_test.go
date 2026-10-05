@@ -13,11 +13,12 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"github.com/sagernet/sing-box/include"
-	"github.com/sagernet/sing-box/log"
-	"github.com/sagernet/sing-box/option"
-	"github.com/sagernet/sing-box/outboundset"
-	"github.com/sagernet/sing-box/schema"
+	"github.com/CyberVacation/rostra/include"
+	"github.com/CyberVacation/rostra/log"
+	"github.com/CyberVacation/rostra/option"
+	"github.com/CyberVacation/rostra/outboundset"
+	"github.com/CyberVacation/rostra/schema"
+
 	"github.com/sagernet/sing/common/json"
 	"github.com/sagernet/sing/service/filemanager"
 

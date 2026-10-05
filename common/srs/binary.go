@@ -9,9 +9,10 @@ import (
 	"slices"
 	"unsafe"
 
-	"github.com/sagernet/sing-box/common/ipset"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/common/ipset"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/domain"
 	E "github.com/sagernet/sing/common/exceptions"

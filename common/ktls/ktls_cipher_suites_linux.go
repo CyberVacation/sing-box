@@ -10,7 +10,7 @@ import (
 	"crypto/tls"
 	"unsafe"
 
-	"github.com/sagernet/sing-box/common/badtls"
+	"github.com/CyberVacation/rostra/common/badtls"
 )
 
 type kernelCryptoCipherType uint16

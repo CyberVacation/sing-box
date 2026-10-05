@@ -4,9 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/sagernet/sing-box/common/tls"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/common/tls"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/sing/common/logger"
 	N "github.com/sagernet/sing/common/network"
 )

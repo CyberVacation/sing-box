@@ -12,9 +12,10 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/sagernet/sing-box/cmd/internal/build_shared"
-	"github.com/sagernet/sing-box/common/windivert"
-	"github.com/sagernet/sing-box/log"
+	"github.com/CyberVacation/rostra/cmd/internal/build_shared"
+	"github.com/CyberVacation/rostra/common/windivert"
+	"github.com/CyberVacation/rostra/log"
+
 	"github.com/sagernet/sing-usbip/driverassets"
 	E "github.com/sagernet/sing/common/exceptions"
 )
@@ -87,7 +88,8 @@ func build() error {
 	if cgoEnabled {
 		cgoEnabledValue = "1"
 	}
-	command.Env = append(os.Environ(),
+	command.Env = append(
+		os.Environ(),
 		"CGO_ENABLED="+cgoEnabledValue,
 		"GOOS="+operatingSystem,
 		"GOARCH="+architecture,

@@ -7,9 +7,10 @@ import (
 	"io"
 	"os"
 
-	"github.com/sagernet/sing-box/daemon"
-	"github.com/sagernet/sing-box/include"
-	"github.com/sagernet/sing-box/log"
+	"github.com/CyberVacation/rostra/daemon"
+	"github.com/CyberVacation/rostra/include"
+	"github.com/CyberVacation/rostra/log"
+
 	E "github.com/sagernet/sing/common/exceptions"
 
 	"github.com/spf13/cobra"

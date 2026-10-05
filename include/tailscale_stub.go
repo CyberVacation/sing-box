@@ -5,16 +5,17 @@ package include
 import (
 	"context"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/adapter/certificate"
-	"github.com/sagernet/sing-box/adapter/endpoint"
-	"github.com/sagernet/sing-box/adapter/inbound"
-	"github.com/sagernet/sing-box/adapter/outbound"
-	"github.com/sagernet/sing-box/adapter/service"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/dns"
-	"github.com/sagernet/sing-box/log"
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/adapter/certificate"
+	"github.com/CyberVacation/rostra/adapter/endpoint"
+	"github.com/CyberVacation/rostra/adapter/inbound"
+	"github.com/CyberVacation/rostra/adapter/outbound"
+	"github.com/CyberVacation/rostra/adapter/service"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/dns"
+	"github.com/CyberVacation/rostra/log"
+	"github.com/CyberVacation/rostra/option"
+
 	E "github.com/sagernet/sing/common/exceptions"
 )
 

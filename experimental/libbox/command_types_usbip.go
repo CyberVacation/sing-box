@@ -5,7 +5,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/sagernet/sing-box/daemon"
+	"github.com/CyberVacation/rostra/daemon"
 )
 
 type USBProviderHandler interface {

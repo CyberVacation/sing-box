@@ -9,7 +9,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/sagernet/sing-box/daemon"
+	"github.com/CyberVacation/rostra/daemon"
+
 	"github.com/sagernet/sing-usbip"
 	E "github.com/sagernet/sing/common/exceptions"
 )

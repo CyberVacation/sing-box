@@ -1,6 +1,6 @@
 package libbox
 
-import C "github.com/sagernet/sing-box/constant"
+import C "github.com/CyberVacation/rostra/constant"
 
 type PlatformInterface interface {
 	LocalDNSTransport() LocalDNSTransport

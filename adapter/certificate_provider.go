@@ -4,8 +4,8 @@ import (
 	"context"
 	"crypto/tls"
 
-	"github.com/sagernet/sing-box/log"
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/log"
+	"github.com/CyberVacation/rostra/option"
 )
 
 type CertificateProvider interface {

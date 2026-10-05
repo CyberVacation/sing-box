@@ -8,7 +8,8 @@ import (
 	"strings"
 	"time"
 
-	C "github.com/sagernet/sing-box/constant"
+	C "github.com/CyberVacation/rostra/constant"
+
 	"github.com/sagernet/sing-tun"
 	"github.com/sagernet/sing/common/control"
 )

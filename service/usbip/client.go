@@ -5,12 +5,13 @@ package usbip
 import (
 	"context"
 
-	"github.com/sagernet/sing-box/adapter"
-	boxService "github.com/sagernet/sing-box/adapter/service"
-	"github.com/sagernet/sing-box/common/dialer"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/log"
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/adapter"
+	boxService "github.com/CyberVacation/rostra/adapter/service"
+	"github.com/CyberVacation/rostra/common/dialer"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/log"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/sing-usbip"
 	E "github.com/sagernet/sing/common/exceptions"
 )

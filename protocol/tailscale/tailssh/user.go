@@ -3,7 +3,7 @@
 package tailssh
 
 import (
-	"github.com/sagernet/sing-box/adapter"
+	"github.com/CyberVacation/rostra/adapter"
 )
 
 func resolveLocalUser(platformInterface adapter.PlatformInterface, username string) (*adapter.PlatformUser, error) {

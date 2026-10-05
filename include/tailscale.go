@@ -3,14 +3,14 @@
 package include
 
 import (
-	"github.com/sagernet/sing-box/adapter/certificate"
-	"github.com/sagernet/sing-box/adapter/endpoint"
-	"github.com/sagernet/sing-box/adapter/inbound"
-	"github.com/sagernet/sing-box/adapter/outbound"
-	"github.com/sagernet/sing-box/adapter/service"
-	"github.com/sagernet/sing-box/dns"
-	"github.com/sagernet/sing-box/protocol/tailscale"
-	"github.com/sagernet/sing-box/service/derp"
+	"github.com/CyberVacation/rostra/adapter/certificate"
+	"github.com/CyberVacation/rostra/adapter/endpoint"
+	"github.com/CyberVacation/rostra/adapter/inbound"
+	"github.com/CyberVacation/rostra/adapter/outbound"
+	"github.com/CyberVacation/rostra/adapter/service"
+	"github.com/CyberVacation/rostra/dns"
+	"github.com/CyberVacation/rostra/protocol/tailscale"
+	"github.com/CyberVacation/rostra/service/derp"
 )
 
 func registerTailscaleEndpoint(registry *endpoint.Registry) {

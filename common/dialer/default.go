@@ -9,11 +9,12 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/common/listener"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/option"
-	"github.com/sagernet/sing-box/service/powerreport"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/common/listener"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/option"
+	"github.com/CyberVacation/rostra/service/powerreport"
+
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/bufio"
 	"github.com/sagernet/sing/common/control"

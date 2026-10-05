@@ -5,7 +5,8 @@ import (
 	"reflect"
 	"slices"
 
-	"github.com/sagernet/sing-box/schema"
+	"github.com/CyberVacation/rostra/schema"
+
 	"github.com/sagernet/sing/common/byteformats"
 	E "github.com/sagernet/sing/common/exceptions"
 	"github.com/sagernet/sing/common/json"

@@ -5,11 +5,12 @@ import (
 	"slices"
 	"sync/atomic"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/common/urltest"
-	"github.com/sagernet/sing-box/experimental/clashmode"
-	"github.com/sagernet/sing-box/log"
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/common/urltest"
+	"github.com/CyberVacation/rostra/experimental/clashmode"
+	"github.com/CyberVacation/rostra/log"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/sing/common/observable"
 	"github.com/sagernet/sing/service"
 	"github.com/sagernet/sing/service/pause"

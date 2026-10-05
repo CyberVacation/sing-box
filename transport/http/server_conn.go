@@ -8,7 +8,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/sagernet/sing-box/common/badhttp"
+	"github.com/CyberVacation/rostra/common/badhttp"
+
 	E "github.com/sagernet/sing/common/exceptions"
 	F "github.com/sagernet/sing/common/format"
 	M "github.com/sagernet/sing/common/metadata"

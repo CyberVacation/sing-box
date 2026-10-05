@@ -3,9 +3,10 @@
 package usbip
 
 import (
-	boxService "github.com/sagernet/sing-box/adapter/service"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/option"
+	boxService "github.com/CyberVacation/rostra/adapter/service"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/sing-usbip"
 )
 

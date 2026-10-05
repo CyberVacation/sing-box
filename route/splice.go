@@ -8,8 +8,9 @@ import (
 	"slices"
 	"time"
 
-	"github.com/sagernet/sing-box/adapter"
-	C "github.com/sagernet/sing-box/constant"
+	"github.com/CyberVacation/rostra/adapter"
+	C "github.com/CyberVacation/rostra/constant"
+
 	"github.com/sagernet/sing-tun"
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/bufio"

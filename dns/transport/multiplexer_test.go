@@ -9,12 +9,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/common/dialer"
-	C "github.com/sagernet/sing-box/constant"
-	boxDNS "github.com/sagernet/sing-box/dns"
-	"github.com/sagernet/sing-box/log"
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/common/dialer"
+	C "github.com/CyberVacation/rostra/constant"
+	boxDNS "github.com/CyberVacation/rostra/dns"
+	"github.com/CyberVacation/rostra/log"
+	"github.com/CyberVacation/rostra/option"
+
 	M "github.com/sagernet/sing/common/metadata"
 
 	mDNS "github.com/miekg/dns"

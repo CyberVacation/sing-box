@@ -3,7 +3,8 @@ package outboundset
 import (
 	"strconv"
 
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/option"
+
 	E "github.com/sagernet/sing/common/exceptions"
 )
 

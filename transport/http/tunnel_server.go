@@ -7,8 +7,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/sagernet/sing-box/common/badhttp"
-	"github.com/sagernet/sing-box/transport/v2rayhttp"
+	"github.com/CyberVacation/rostra/common/badhttp"
+	"github.com/CyberVacation/rostra/transport/v2rayhttp"
+
 	"github.com/sagernet/sing/common/auth"
 	E "github.com/sagernet/sing/common/exceptions"
 	M "github.com/sagernet/sing/common/metadata"

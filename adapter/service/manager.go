@@ -4,8 +4,9 @@ import (
 	"context"
 	"sync"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/log"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/log"
+
 	E "github.com/sagernet/sing/common/exceptions"
 )
 

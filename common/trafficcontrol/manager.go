@@ -4,8 +4,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/common/compatible"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/common/compatible"
+
 	"github.com/sagernet/sing/common/cleanup"
 	"github.com/sagernet/sing/common/observable"
 	"github.com/sagernet/sing/common/x/list"

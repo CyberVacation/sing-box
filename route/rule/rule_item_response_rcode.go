@@ -1,7 +1,8 @@
 package rule
 
 import (
-	"github.com/sagernet/sing-box/adapter"
+	"github.com/CyberVacation/rostra/adapter"
+
 	F "github.com/sagernet/sing/common/format"
 
 	"github.com/miekg/dns"

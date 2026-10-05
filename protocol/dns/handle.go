@@ -5,9 +5,10 @@ import (
 	"encoding/binary"
 	"net"
 
-	"github.com/sagernet/sing-box/adapter"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/dns"
+	"github.com/CyberVacation/rostra/adapter"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/dns"
+
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/buf"
 	"github.com/sagernet/sing/common/bufio"

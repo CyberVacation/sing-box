@@ -3,7 +3,7 @@ package settings
 import (
 	"context"
 
-	"github.com/sagernet/sing-box/adapter"
+	"github.com/CyberVacation/rostra/adapter"
 )
 
 type WIFIMonitor interface {

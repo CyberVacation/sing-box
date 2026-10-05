@@ -7,8 +7,9 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/sagernet/sing-box/cmd/internal/build_shared"
-	"github.com/sagernet/sing-box/log"
+	"github.com/CyberVacation/rostra/cmd/internal/build_shared"
+	"github.com/CyberVacation/rostra/log"
+
 	"github.com/sagernet/sing/common"
 )
 

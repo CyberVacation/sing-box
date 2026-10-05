@@ -13,11 +13,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/sagernet/sing-box/adapter"
-	OB "github.com/sagernet/sing-box/adapter/outbound"
-	"github.com/sagernet/sing-box/common/urltest"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/adapter"
+	OB "github.com/CyberVacation/rostra/adapter/outbound"
+	"github.com/CyberVacation/rostra/common/urltest"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/option"
+
 	E "github.com/sagernet/sing/common/exceptions"
 	"github.com/sagernet/sing/common/json"
 	"github.com/sagernet/sing/common/logger"

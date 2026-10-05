@@ -18,7 +18,8 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"github.com/sagernet/sing-box/adapter"
+	"github.com/CyberVacation/rostra/adapter"
+
 	E "github.com/sagernet/sing/common/exceptions"
 )
 

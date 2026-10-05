@@ -3,8 +3,8 @@
 package include
 
 import (
-	"github.com/sagernet/sing-box/adapter/service"
-	"github.com/sagernet/sing-box/service/ccm"
+	"github.com/CyberVacation/rostra/adapter/service"
+	"github.com/CyberVacation/rostra/service/ccm"
 )
 
 func registerCCMService(registry *service.Registry) {

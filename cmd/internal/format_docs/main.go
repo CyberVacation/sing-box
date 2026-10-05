@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/sagernet/sing-box/log"
+	"github.com/CyberVacation/rostra/log"
 )
 
 func main() {

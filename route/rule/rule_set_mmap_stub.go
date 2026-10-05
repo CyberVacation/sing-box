@@ -5,7 +5,8 @@ package rule
 import (
 	"context"
 
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/sing/common/logger"
 )
 

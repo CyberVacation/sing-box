@@ -25,11 +25,12 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/common/certificate"
-	"github.com/sagernet/sing-box/common/proxybridge"
-	boxTLS "github.com/sagernet/sing-box/common/tls"
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/common/certificate"
+	"github.com/CyberVacation/rostra/common/proxybridge"
+	boxTLS "github.com/CyberVacation/rostra/common/tls"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/sing/common"
 	E "github.com/sagernet/sing/common/exceptions"
 	"github.com/sagernet/sing/common/logger"

@@ -2,6 +2,6 @@
 
 package v2rayxhttp
 
-import "github.com/sagernet/sing-box/common/tls"
+import "github.com/CyberVacation/rostra/common/tls"
 
 func isReality(config tls.Config) bool { return false }

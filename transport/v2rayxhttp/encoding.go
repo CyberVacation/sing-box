@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/option"
 
 	"golang.org/x/net/http/httpguts"
 )

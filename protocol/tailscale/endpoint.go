@@ -17,17 +17,18 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/adapter/endpoint"
-	"github.com/sagernet/sing-box/common/dialer"
-	"github.com/sagernet/sing-box/common/iponly"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/dns"
-	"github.com/sagernet/sing-box/log"
-	"github.com/sagernet/sing-box/option"
-	"github.com/sagernet/sing-box/protocol/tailscale/tailssh"
-	R "github.com/sagernet/sing-box/route/rule"
-	"github.com/sagernet/sing-box/service/oomkiller"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/adapter/endpoint"
+	"github.com/CyberVacation/rostra/common/dialer"
+	"github.com/CyberVacation/rostra/common/iponly"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/dns"
+	"github.com/CyberVacation/rostra/log"
+	"github.com/CyberVacation/rostra/option"
+	"github.com/CyberVacation/rostra/protocol/tailscale/tailssh"
+	R "github.com/CyberVacation/rostra/route/rule"
+	"github.com/CyberVacation/rostra/service/oomkiller"
+
 	"github.com/sagernet/sing-tun"
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/bufio"
@@ -66,7 +67,7 @@ var (
 )
 
 func init() {
-	version.SetVersion(strings.TrimSpace(tailscaleroot.VersionDotTxt) + "-0-(sing-box " + C.Version + ")")
+	version.SetVersion(strings.TrimSpace(tailscaleroot.VersionDotTxt) + "-0-(rostra " + C.Version + ")")
 }
 
 func RegisterEndpoint(registry *endpoint.Registry) {
@@ -142,7 +143,7 @@ func NewEndpoint(ctx context.Context, router adapter.Router, logger log.ContextL
 		hostname = osHostname
 	}
 	if hostname == "" {
-		hostname = "sing-box"
+		hostname = "rostra"
 	}
 	stateDirectory = filemanager.BasePath(ctx, os.ExpandEnv(stateDirectory))
 	stateDirectory, _ = filepath.Abs(stateDirectory)

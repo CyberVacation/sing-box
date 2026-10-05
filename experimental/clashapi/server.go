@@ -12,15 +12,16 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/common/trafficcontrol"
+	"github.com/CyberVacation/rostra/common/urltest"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/experimental"
+	"github.com/CyberVacation/rostra/experimental/clashmode"
+	"github.com/CyberVacation/rostra/log"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/cors"
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/common/trafficcontrol"
-	"github.com/sagernet/sing-box/common/urltest"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/experimental"
-	"github.com/sagernet/sing-box/experimental/clashmode"
-	"github.com/sagernet/sing-box/log"
-	"github.com/sagernet/sing-box/option"
 	E "github.com/sagernet/sing/common/exceptions"
 	"github.com/sagernet/sing/common/json"
 	"github.com/sagernet/sing/service"
@@ -359,5 +360,5 @@ func getLogs(ctx context.Context, logFactory log.ObservableFactory) func(w http.
 }
 
 func version(w http.ResponseWriter, r *http.Request) {
-	render.JSON(w, r, render.M{"version": "sing-box " + C.Version, "premium": true, "meta": true})
+	render.JSON(w, r, render.M{"version": "rostra " + C.Version, "premium": true, "meta": true})
 }

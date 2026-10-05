@@ -3,7 +3,7 @@ package option
 import (
 	"testing"
 
-	C "github.com/sagernet/sing-box/constant"
+	C "github.com/CyberVacation/rostra/constant"
 
 	"github.com/stretchr/testify/require"
 )

@@ -9,13 +9,14 @@ import (
 	"runtime/debug"
 	"time"
 
-	"github.com/sagernet/sing-box/common/networkquality"
-	"github.com/sagernet/sing-box/common/stun"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/dns"
-	"github.com/sagernet/sing-box/experimental/locale"
-	"github.com/sagernet/sing-box/log"
-	"github.com/sagernet/sing-box/service/oomkiller"
+	"github.com/CyberVacation/rostra/common/networkquality"
+	"github.com/CyberVacation/rostra/common/stun"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/dns"
+	"github.com/CyberVacation/rostra/experimental/locale"
+	"github.com/CyberVacation/rostra/log"
+	"github.com/CyberVacation/rostra/service/oomkiller"
+
 	"github.com/sagernet/sing/common/byteformats"
 	E "github.com/sagernet/sing/common/exceptions"
 )

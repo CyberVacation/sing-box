@@ -7,9 +7,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/common/convertor/adguard"
-	C "github.com/sagernet/sing-box/constant"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/common/convertor/adguard"
+	C "github.com/CyberVacation/rostra/constant"
+
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/json/badoption"
 	slogger "github.com/sagernet/sing/common/logger"

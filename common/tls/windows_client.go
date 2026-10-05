@@ -14,8 +14,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/sagernet/sing-box/common/schannel"
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/common/schannel"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/sing/common/buf"
 	"github.com/sagernet/sing/common/bufio"
 	E "github.com/sagernet/sing/common/exceptions"

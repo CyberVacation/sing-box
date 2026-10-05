@@ -1,4 +1,4 @@
-module github.com/sagernet/sing-box
+module github.com/CyberVacation/rostra
 
 go 1.25.5
 

@@ -7,9 +7,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/common/trafficcontrol"
-	C "github.com/sagernet/sing-box/constant"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/common/trafficcontrol"
+	C "github.com/CyberVacation/rostra/constant"
+
 	"github.com/sagernet/sing/common"
 	F "github.com/sagernet/sing/common/format"
 	"github.com/sagernet/sing/common/json"

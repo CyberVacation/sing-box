@@ -8,8 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/sagernet/sing-box/common/tls"
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/common/tls"
+	"github.com/CyberVacation/rostra/option"
+
 	M "github.com/sagernet/sing/common/metadata"
 
 	"golang.org/x/net/http/httpguts"

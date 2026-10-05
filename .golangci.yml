@@ -50,6 +50,7 @@ formatters:
     gci:
       sections:
         - standard
+        - prefix(github.com/CyberVacation/rostra)
         - prefix(github.com/sagernet/)
         - default
       custom-order: true

@@ -6,9 +6,10 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/sagernet/sing-box/common/ipset"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/schema"
+	"github.com/CyberVacation/rostra/common/ipset"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/schema"
+
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/domain"
 	E "github.com/sagernet/sing/common/exceptions"

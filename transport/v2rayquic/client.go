@@ -8,12 +8,13 @@ import (
 	"sync"
 	"sync/atomic"
 
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/common/tls"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/quic-go"
 	"github.com/sagernet/quic-go/http3"
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/common/tls"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/option"
 	"github.com/sagernet/sing-quic"
 	"github.com/sagernet/sing/common"
 	M "github.com/sagernet/sing/common/metadata"

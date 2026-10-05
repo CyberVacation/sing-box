@@ -5,10 +5,11 @@ import (
 	"net"
 	"os"
 
-	"github.com/sagernet/sing-box/common/badtls"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/log"
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/common/badtls"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/log"
+	"github.com/CyberVacation/rostra/option"
+
 	aTLS "github.com/sagernet/sing/common/tls"
 )
 

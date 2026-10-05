@@ -1,7 +1,7 @@
 package libbox
 
 import (
-	"github.com/sagernet/sing-box/experimental/deprecated"
+	"github.com/CyberVacation/rostra/experimental/deprecated"
 )
 
 var _ = deprecated.Note(DeprecatedNote{})

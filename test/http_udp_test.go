@@ -12,9 +12,10 @@ import (
 	"testing"
 	"time"
 
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/option"
-	sHTTP "github.com/sagernet/sing-box/transport/http"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/option"
+	sHTTP "github.com/CyberVacation/rostra/transport/http"
+
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/auth"
 	E "github.com/sagernet/sing/common/exceptions"

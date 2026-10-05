@@ -4,7 +4,8 @@ import (
 	"context"
 	"slices"
 
-	"github.com/sagernet/sing-box/adapter"
+	"github.com/CyberVacation/rostra/adapter"
+
 	ovpn "github.com/sagernet/sing-openvpn"
 )
 

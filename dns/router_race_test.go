@@ -8,11 +8,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/sagernet/sing-box/adapter"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/log"
-	"github.com/sagernet/sing-box/option"
-	R "github.com/sagernet/sing-box/route/rule"
+	"github.com/CyberVacation/rostra/adapter"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/log"
+	"github.com/CyberVacation/rostra/option"
+	R "github.com/CyberVacation/rostra/route/rule"
 
 	mDNS "github.com/miekg/dns"
 	"github.com/stretchr/testify/require"

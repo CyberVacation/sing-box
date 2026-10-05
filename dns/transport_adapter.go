@@ -1,7 +1,7 @@
 package dns
 
 import (
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/option"
 )
 
 type TransportAdapter struct {

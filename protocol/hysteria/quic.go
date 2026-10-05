@@ -1,7 +1,8 @@
 package hysteria
 
 import (
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/option"
+
 	qtls "github.com/sagernet/sing-quic"
 )
 

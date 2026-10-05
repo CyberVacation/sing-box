@@ -1,12 +1,17 @@
-# sing-box
+# rostra
 
-The universal proxy platform.
-
-[![Packaging status](https://repology.org/badge/vertical-allrepos/sing-box.svg)](https://repology.org/project/sing-box/versions)
+Rostra is an independently maintained fork of [sing-box](https://github.com/SagerNet/sing-box).
+It is not affiliated with or endorsed by SagerNet.
 
 ## Documentation
 
-https://sing-box.sagernet.org
+- [Build from source](docs/installation/build-from-source.md)
+- [Upstream package managers](docs/installation/package-manager.md)
+- [Migration from sing-box](docs/rostra-migration.md)
+- [Configuration](docs/configuration/index.md)
+
+The Go module is `github.com/CyberVacation/rostra`.
+Upstream copyright and license notices are retained below.
 
 ## License
 

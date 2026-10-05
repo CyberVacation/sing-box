@@ -9,9 +9,10 @@ import (
 	"testing"
 	"time"
 
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/common/sniff"
+
 	"github.com/sagernet/quic-go"
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/common/sniff"
 
 	"github.com/stretchr/testify/require"
 )

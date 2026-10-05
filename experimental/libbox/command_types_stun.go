@@ -1,6 +1,6 @@
 package libbox
 
-import "github.com/sagernet/sing-box/daemon"
+import "github.com/CyberVacation/rostra/daemon"
 
 type STUNTestProgress struct {
 	Phase        int32

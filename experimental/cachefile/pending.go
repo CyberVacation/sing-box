@@ -6,8 +6,9 @@ import (
 	"net/netip"
 	"time"
 
+	"github.com/CyberVacation/rostra/adapter"
+
 	"github.com/sagernet/bbolt"
-	"github.com/sagernet/sing-box/adapter"
 	"github.com/sagernet/sing/common/buf"
 )
 

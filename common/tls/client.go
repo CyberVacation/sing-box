@@ -8,10 +8,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/sagernet/sing-box/common/badtls"
-	"github.com/sagernet/sing-box/common/tlsspoof"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/common/badtls"
+	"github.com/CyberVacation/rostra/common/tlsspoof"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/option"
+
 	E "github.com/sagernet/sing/common/exceptions"
 	"github.com/sagernet/sing/common/logger"
 	M "github.com/sagernet/sing/common/metadata"

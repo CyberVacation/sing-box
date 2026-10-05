@@ -9,12 +9,13 @@ import (
 	"testing"
 	"time"
 
+	"github.com/CyberVacation/rostra"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/include"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/quic-go"
 	"github.com/sagernet/quic-go/http3"
-	"github.com/sagernet/sing-box"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/include"
-	"github.com/sagernet/sing-box/option"
 	"github.com/sagernet/sing/common/bufio"
 	"github.com/sagernet/sing/common/debug"
 	M "github.com/sagernet/sing/common/metadata"

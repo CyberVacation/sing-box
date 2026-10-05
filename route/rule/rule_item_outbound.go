@@ -4,8 +4,9 @@ import (
 	"context"
 	"strings"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/experimental/deprecated"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/experimental/deprecated"
+
 	F "github.com/sagernet/sing/common/format"
 )
 

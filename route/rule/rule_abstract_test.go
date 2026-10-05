@@ -4,8 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"github.com/sagernet/sing-box/adapter"
-	C "github.com/sagernet/sing-box/constant"
+	"github.com/CyberVacation/rostra/adapter"
+	C "github.com/CyberVacation/rostra/constant"
+
 	"github.com/sagernet/sing/common/x/list"
 
 	"github.com/stretchr/testify/require"

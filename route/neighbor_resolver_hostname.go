@@ -5,7 +5,7 @@ import (
 	"net/netip"
 	"strings"
 
-	"github.com/sagernet/sing-box/dns"
+	"github.com/CyberVacation/rostra/dns"
 )
 
 func lookupAddressesByHostname(

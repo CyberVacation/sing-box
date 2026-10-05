@@ -6,7 +6,8 @@ import (
 	"net/netip"
 	"time"
 
-	C "github.com/sagernet/sing-box/constant"
+	C "github.com/CyberVacation/rostra/constant"
+
 	"github.com/sagernet/sing/common"
 	E "github.com/sagernet/sing/common/exceptions"
 	M "github.com/sagernet/sing/common/metadata"

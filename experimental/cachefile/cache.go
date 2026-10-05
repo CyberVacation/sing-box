@@ -8,11 +8,12 @@ import (
 	"sync"
 	"time"
 
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/experimental/deprecated"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/bbolt"
 	bboltErrors "github.com/sagernet/bbolt/errors"
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/experimental/deprecated"
-	"github.com/sagernet/sing-box/option"
 	"github.com/sagernet/sing/common"
 	E "github.com/sagernet/sing/common/exceptions"
 	"github.com/sagernet/sing/common/logger"

@@ -6,7 +6,8 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/sing/common/json"
 
 	"github.com/stretchr/testify/require"

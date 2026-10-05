@@ -7,8 +7,9 @@ import (
 	"encoding/hex"
 	"net"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/log"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/log"
+
 	"github.com/sagernet/sing/common"
 	"github.com/sagernet/sing/common/auth"
 	E "github.com/sagernet/sing/common/exceptions"

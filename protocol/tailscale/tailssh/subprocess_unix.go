@@ -7,7 +7,8 @@ import (
 	"os/exec"
 	"syscall"
 
-	C "github.com/sagernet/sing-box/constant"
+	C "github.com/CyberVacation/rostra/constant"
+
 	E "github.com/sagernet/sing/common/exceptions"
 
 	"github.com/creack/pty"

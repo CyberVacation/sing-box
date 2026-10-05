@@ -15,10 +15,11 @@ import (
 	"testing"
 	"time"
 
-	box "github.com/sagernet/sing-box"
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/outboundset"
-	"github.com/sagernet/sing-box/protocol/group"
+	box "github.com/CyberVacation/rostra"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/outboundset"
+	"github.com/CyberVacation/rostra/protocol/group"
+
 	M "github.com/sagernet/sing/common/metadata"
 	"github.com/sagernet/sing/service"
 

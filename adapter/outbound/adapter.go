@@ -1,7 +1,7 @@
 package outbound
 
 import (
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/option"
 )
 
 type Adapter struct {

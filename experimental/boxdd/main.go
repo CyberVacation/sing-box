@@ -6,9 +6,10 @@ import (
 	"os"
 	"time"
 
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/daemon"
-	"github.com/sagernet/sing-box/log"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/daemon"
+	"github.com/CyberVacation/rostra/log"
+
 	"github.com/sagernet/sing/common"
 
 	"github.com/spf13/cobra"

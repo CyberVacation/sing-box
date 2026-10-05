@@ -6,31 +6,32 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/sagernet/sing-box/adapter"
-	boxCertificate "github.com/sagernet/sing-box/adapter/certificate"
-	"github.com/sagernet/sing-box/adapter/endpoint"
-	"github.com/sagernet/sing-box/adapter/inbound"
-	"github.com/sagernet/sing-box/adapter/outbound"
-	boxService "github.com/sagernet/sing-box/adapter/service"
-	"github.com/sagernet/sing-box/common/certificate"
-	"github.com/sagernet/sing-box/common/dialer"
-	"github.com/sagernet/sing-box/common/httpclient"
-	"github.com/sagernet/sing-box/common/netns"
-	"github.com/sagernet/sing-box/common/taskmonitor"
-	"github.com/sagernet/sing-box/common/tls"
-	"github.com/sagernet/sing-box/common/trafficcontrol"
-	"github.com/sagernet/sing-box/common/urltest"
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/dns"
-	"github.com/sagernet/sing-box/experimental"
-	"github.com/sagernet/sing-box/experimental/cachefile"
-	"github.com/sagernet/sing-box/experimental/clashmode"
-	"github.com/sagernet/sing-box/experimental/deprecated"
-	"github.com/sagernet/sing-box/log"
-	"github.com/sagernet/sing-box/option"
-	"github.com/sagernet/sing-box/outboundset"
-	"github.com/sagernet/sing-box/protocol/direct"
-	"github.com/sagernet/sing-box/route"
+	"github.com/CyberVacation/rostra/adapter"
+	boxCertificate "github.com/CyberVacation/rostra/adapter/certificate"
+	"github.com/CyberVacation/rostra/adapter/endpoint"
+	"github.com/CyberVacation/rostra/adapter/inbound"
+	"github.com/CyberVacation/rostra/adapter/outbound"
+	boxService "github.com/CyberVacation/rostra/adapter/service"
+	"github.com/CyberVacation/rostra/common/certificate"
+	"github.com/CyberVacation/rostra/common/dialer"
+	"github.com/CyberVacation/rostra/common/httpclient"
+	"github.com/CyberVacation/rostra/common/netns"
+	"github.com/CyberVacation/rostra/common/taskmonitor"
+	"github.com/CyberVacation/rostra/common/tls"
+	"github.com/CyberVacation/rostra/common/trafficcontrol"
+	"github.com/CyberVacation/rostra/common/urltest"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/dns"
+	"github.com/CyberVacation/rostra/experimental"
+	"github.com/CyberVacation/rostra/experimental/cachefile"
+	"github.com/CyberVacation/rostra/experimental/clashmode"
+	"github.com/CyberVacation/rostra/experimental/deprecated"
+	"github.com/CyberVacation/rostra/log"
+	"github.com/CyberVacation/rostra/option"
+	"github.com/CyberVacation/rostra/outboundset"
+	"github.com/CyberVacation/rostra/protocol/direct"
+	"github.com/CyberVacation/rostra/route"
+
 	"github.com/sagernet/sing/common"
 	E "github.com/sagernet/sing/common/exceptions"
 	F "github.com/sagernet/sing/common/format"
@@ -530,7 +531,7 @@ func (s *Box) PreStart() error {
 		s.Close()
 		return err
 	}
-	s.logger.Info("sing-box pre-started (", F.Seconds(time.Since(s.createdAt).Seconds()), "s)")
+	s.logger.Info("rostra pre-started (", F.Seconds(time.Since(s.createdAt).Seconds()), "s)")
 	return nil
 }
 
@@ -540,7 +541,7 @@ func (s *Box) Start() error {
 		s.Close()
 		return err
 	}
-	s.logger.Info("sing-box started (", F.Seconds(time.Since(s.createdAt).Seconds()), "s)")
+	s.logger.Info("rostra started (", F.Seconds(time.Since(s.createdAt).Seconds()), "s)")
 	return nil
 }
 
@@ -590,7 +591,8 @@ func (s *Box) preStart() error {
 	if err != nil {
 		return err
 	}
-	err = s.startComponents(adapter.StartStateInitialize,
+	err = s.startComponents(
+		adapter.StartStateInitialize,
 		boxComponent{s.httpClientService.Name(), s.httpClientService},
 		boxComponent{"network", s.network},
 		boxComponent{"dns-transport", s.dnsTransport},
@@ -606,7 +608,8 @@ func (s *Box) preStart() error {
 	if err != nil {
 		return err
 	}
-	err = s.startComponents(adapter.StartStateStart,
+	err = s.startComponents(
+		adapter.StartStateStart,
 		boxComponent{"outbound", s.outbound},
 		boxComponent{"dns-transport", s.dnsTransport},
 		boxComponent{"network", s.network},
@@ -644,7 +647,8 @@ func (s *Box) start() error {
 		}
 		s.scope.Add(s.ntpService.Close)
 	}
-	err = s.startComponents(adapter.StartStateStart,
+	err = s.startComponents(
+		adapter.StartStateStart,
 		boxComponent{"endpoint", s.endpoint},
 		boxComponent{"certificate-provider", s.certificateProvider},
 		boxComponent{"inbound", s.inbound},
@@ -653,7 +657,8 @@ func (s *Box) start() error {
 	if err != nil {
 		return err
 	}
-	err = s.startComponents(adapter.StartStatePostStart,
+	err = s.startComponents(
+		adapter.StartStatePostStart,
 		boxComponent{"outbound", s.outbound},
 		boxComponent{"network", s.network},
 		boxComponent{"dns-transport", s.dnsTransport},
@@ -672,7 +677,8 @@ func (s *Box) start() error {
 	if err != nil {
 		return err
 	}
-	err = s.startComponents(adapter.StartStateStarted,
+	err = s.startComponents(
+		adapter.StartStateStarted,
 		boxComponent{"network", s.network},
 		boxComponent{"dns-transport", s.dnsTransport},
 		boxComponent{"dns-router", s.dnsRouter},

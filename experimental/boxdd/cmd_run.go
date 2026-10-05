@@ -6,9 +6,10 @@ import (
 	"path/filepath"
 	"syscall"
 
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/experimental/libbox"
-	"github.com/sagernet/sing-box/log"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/experimental/libbox"
+	"github.com/CyberVacation/rostra/log"
+
 	E "github.com/sagernet/sing/common/exceptions"
 
 	"github.com/spf13/cobra"

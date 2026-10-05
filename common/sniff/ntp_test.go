@@ -6,9 +6,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/common/sniff"
-	C "github.com/sagernet/sing-box/constant"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/common/sniff"
+	C "github.com/CyberVacation/rostra/constant"
 
 	"github.com/stretchr/testify/require"
 )

@@ -6,8 +6,9 @@ import (
 	"os"
 	"path/filepath"
 
-	C "github.com/sagernet/sing-box/constant"
-	"github.com/sagernet/sing-box/experimental/locale"
+	C "github.com/CyberVacation/rostra/constant"
+	"github.com/CyberVacation/rostra/experimental/locale"
+
 	E "github.com/sagernet/sing/common/exceptions"
 	"github.com/sagernet/tailscale/atomicfile"
 

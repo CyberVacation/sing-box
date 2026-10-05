@@ -4,9 +4,10 @@ import (
 	"context"
 	"strings"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/dns"
-	"github.com/sagernet/sing-box/dns/transport"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/dns"
+	"github.com/CyberVacation/rostra/dns/transport"
+
 	E "github.com/sagernet/sing/common/exceptions"
 
 	mDNS "github.com/miekg/dns"

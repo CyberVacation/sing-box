@@ -11,7 +11,8 @@ import (
 	"net"
 	"testing"
 
-	"github.com/sagernet/sing-box/option"
+	"github.com/CyberVacation/rostra/option"
+
 	"github.com/sagernet/sing/common/buf"
 	"github.com/sagernet/sing/common/json/badoption"
 	N "github.com/sagernet/sing/common/network"

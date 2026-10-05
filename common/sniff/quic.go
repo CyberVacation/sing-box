@@ -10,10 +10,11 @@ import (
 	"io"
 	"os"
 
-	"github.com/sagernet/sing-box/adapter"
-	"github.com/sagernet/sing-box/common/ja3"
-	"github.com/sagernet/sing-box/common/sniff/internal/qtls"
-	C "github.com/sagernet/sing-box/constant"
+	"github.com/CyberVacation/rostra/adapter"
+	"github.com/CyberVacation/rostra/common/ja3"
+	"github.com/CyberVacation/rostra/common/sniff/internal/qtls"
+	C "github.com/CyberVacation/rostra/constant"
+
 	"github.com/sagernet/sing/common/buf"
 	E "github.com/sagernet/sing/common/exceptions"
 
